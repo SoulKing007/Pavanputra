@@ -40,25 +40,34 @@ def signup_view(request):
         form = SignupForm()  # Create an empty form instance
 
     return render(request, "signup.html", {'form': form})  # Pass the form to the template
+
+
 # Login view
 def login_view(request):
     if request.method == 'POST':
-        login_form = LoginForm(request.POST)
-        if login_form.is_valid():
-            username = login_form.cleaned_data['username']
-            password = login_form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, "Logged in successfully.")
-                return redirect('index')  # Redirect to home page after login
-            else:
-                messages.error(request, "Invalid username or password.")
-    else:
-        login_form = LoginForm()
+        email = request.POST['email']
+        password = request.POST['password']
 
-    return render(request, 'login.html', {'login_form': login_form})
+        # Get the custom user model
+        User = get_user_model()  # This will refer to 'pavanputra.CustomUser'
 
+        try:
+            # Try to get the user by email
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = None
+
+        # Check if user exists and password is correct
+        if user is not None and user.check_password(password):
+            login(request, user)  # Log the user in
+            messages.success(request, "Logged in successfully.")
+            return redirect('index')  # Redirect to the index page after login
+        else:
+            messages.error(request, "Invalid credentials. Please try again.")
+            # If login fails, return the form with the error message
+            return render(request, 'login.html', {'email': email})
+
+    return render(request, 'login.html')
 
 # Logout view
 def logout_view(request):
