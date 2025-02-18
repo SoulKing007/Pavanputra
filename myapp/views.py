@@ -3,8 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.core.mail import EmailMessage
 from .forms import SignupForm, LoginForm  # Make sure forms are defined properly
 import random
+from django.contrib.auth.decorators import login_required
 import string
 from django.core.mail import send_mail
 from django.utils import timezone
@@ -44,104 +46,125 @@ def signup_view(request):
     else:
         form = SignupForm()  # Create an empty form instance
 
-    return render(request, "signup.html", {'form': form})  # Pass the form to the template
+    return render(request, "registration/signup.html", {'form': form})  # Pass the form to the template
 
 
 # Login view
+
 def login_view(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-
-        # Get the custom user model
-        User = get_user_model()  # This will refer to 'pavanputra.CustomUser'
-
-        try:
-            # Try to get the user by email
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            user = None
-
-        # Check if user exists and password is correct
-        if user is not None and user.check_password(password):
-            login(request, user)  # Log the user in
-            messages.success(request, "Logged in successfully.")
-            return redirect('index')  # Redirect to the index page after login
+    # Check if the HTTP request method is POST (form submission)
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        # Check if a user with the provided username exists
+        if not User.objects.filter(username=username).exists():
+            # Display an error message if the username does not exist
+            messages.error(request, 'Invalid Username')
+            return redirect('registration/login/')
+        
+        # Authenticate the user with the provided username and password
+        user = authenticate(username=username, password=password)
+        
+        if user is None:
+            # Display an error message if authentication fails (invalid password)
+            messages.error(request, "Invalid Password")
+            return redirect('registration/login/')
         else:
-            messages.error(request, "Invalid credentials. Please try again.")
-            # If login fails, return the form with the error message
-            return render(request, 'login.html', {'email': email})
+            # Log in the user and redirect to the home page upon successful login
+            login(request, user)
+            return redirect('index')
+    
+    # Render the login page template (GET request)
+    return render(request, 'registration/login.html')
 
-    return render(request, 'login.html')
 
 # Logout view
 def logout_view(request):
     logout(request)
     messages.success(request, "Logged out successfully.")
-    return redirect('login')  # Redirect to login page after logout
+    return redirect('registration/logout.html')  # Redirect to login page after logout
+
+import logging
+
+logger = logging.getLogger(__name__)  # Enable logging
+
+def send_otp_email(user, otp):
+    subject = "Your Password Reset OTP"
+    message = f"Hello {user.username},\n\nYour OTP for password reset is: {otp}\n\nThis OTP is valid for 5 minutes."
+    from_email = "niravthapa69@gmail.com"  # Replace with your email
+    recipient_list = [user.email]
+
+    logger.info(f"Sending OTP to {user.email}")  # Log email sending
+    print(f"Sending OTP to {user.email}")  # Debugging print
+
+    send_mail(subject, message, from_email, recipient_list, fail_silently=False)
 
 def generate_otp():
     """Generate a 6-digit OTP"""
-    return ''.join(random.choices(string.digits, k=6))
-
-def send_otp_email(user):
-    """Send OTP to user email"""
-    otp = generate_otp()
-
-    # Store the OTP with an expiry time (e.g., 5 minutes)
-    otp_entry = OTP.objects.create(
-        user=user,
-        otp=otp,
-        expiry_time=timezone.now() + timedelta(minutes=5)  # OTP expires in 5 minutes
-    )
-
-    # Send OTP to user's email
-    send_mail(
-        'Your OTP for Password Reset',
-        f'Your OTP for password reset is: {otp}',
-        'no-reply@example.com',
-        [user.email],
-        fail_silently=False,
-    )
+    import random
+    return str(random.randint(100000, 999999))
 
 def password_reset_request(request):
     """Handle OTP request"""
     if request.method == 'POST':
-        email = request.POST['email']
+        email = request.POST.get('email')
         try:
             user = User.objects.get(email=email)
-            send_otp_email(user)
+            otp = generate_otp()
+
+            # Save OTP in the database with expiry time
+            OTP.objects.create(
+                user=user,
+                otp=otp,
+                expiry_time=timezone.now() + timedelta(minutes=5)
+            )
+
+            send_otp_email(user, otp)  # Send OTP email
             messages.success(request, 'OTP sent to your email.')
-            return redirect('password_reset_verify')
+
+            # Redirect to the verify OTP page with the email in URL
+            return redirect(f'/password_reset/verify/?email={email}')
         except User.DoesNotExist:
             messages.error(request, 'Email address not found.')
-    return render(request, 'password_reset_request.html')
 
-# View to handle OTP verification and password reset
+    return render(request, 'registration/password_reset_request.html')
+
+
 def password_reset_verify(request):
-    """Verify OTP and reset password"""
+    """Verify OTP and reset password."""
+    if request.method == 'GET':
+        email = request.GET.get('email')  # Retrieve email from URL
+
     if request.method == 'POST':
-        email = request.POST['email']
-        otp_entered = request.POST['otp']
-        new_password = request.POST['new_password']
+        email = request.POST.get('email')  # Get email from form
+        otp_entered = request.POST.get('otp')
+        new_password = request.POST.get('new_password')
+
+        # Validate inputs
+        if not email or not otp_entered or not new_password:
+            messages.error(request, 'Missing required fields.')
+            return render(request, 'registration/password_reset_verify.html')
 
         try:
-            user = User.objects.get(email=email)
+            user = get_user_model().objects.get(email=email)
             otp_entry = OTP.objects.filter(user=user, otp=otp_entered).first()
 
             if otp_entry and not otp_entry.is_expired():
-                # Reset the password
                 user.set_password(new_password)
                 user.save()
-
-                # Optionally, delete the OTP after it's used
-                otp_entry.delete()
+                otp_entry.delete()  # Delete OTP after use
 
                 messages.success(request, 'Your password has been reset successfully.')
                 return redirect('login')
             else:
                 messages.error(request, 'Invalid or expired OTP.')
-        except User.DoesNotExist:
+
+        except get_user_model().DoesNotExist:
             messages.error(request, 'User not found.')
-    
-    return render(request, 'password_reset_verify.html')
+
+    return render(request, 'registration/password_reset_verify.html')
+
+@login_required
+def profile_view(request):
+    return render(request, 'accounts/profile.html') 

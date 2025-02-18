@@ -9,12 +9,12 @@
     
     <style>
     :root {
-        --background-color: #F4EAE0;  /* Soft warm beige */
-        --form-box-color: #FFFFFF;    /* Classic white */
-        --primary-color: #D87A56;     /* Warm terracotta button */
-        --primary-hover: #B05C3C;     /* Darker terracotta */
-        --text-color: #3E2C28;        /* Dark brown text */
-        --shadow-color: rgba(0, 0, 0, 0.15); /* Soft warm shadow */
+        --background-color: #E0F7FA;  /* Light blue background */
+            --form-box-color: #FFFFFF;    /* Classic white */
+            --primary-color: #007BFF;     /* Bright blue button */
+            --primary-hover: #0056b3;     /* Darker blue hover */
+            --text-color: #003366;        /* Dark blue text */  
+            --shadow-color: rgba(0, 0, 0, 0.15); /* Soft warm shadow */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -131,30 +131,28 @@
 
     <div class="container">
         <h2>Login</h2>
-        <form method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
-            <input type="email" name="email" id="login-email" placeholder="Email" value="{{ email }}" required>
-            <div class="password-wrapper">
-                <input type="password" name="password" id="login-password" placeholder="Password" required>
-                <span class="eye-icon" onclick="togglePassword('login-password')">👁️</span>
-            </div>
-            <button type="submit">Login</button>
-        </form>
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="username" name="username" id="username" placeholder="Usernmae" value="{{ username }}" required>
+        <div class="password-wrapper">
+            <input type="password" name="password" id="login-password" placeholder="Password" required>
+            <span class="eye-icon" onclick="togglePassword('login-password')">👁️</span>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 
         <p>Don't have an account? <a href="{% url 'signup' %}" class="toggle-link">Signup here</a></p>
 
         <!-- Forgot Password Link -->
-        <p><a href="{% url 'password_reset' %}" class="forgot-password-link">Forgot Password?</a></p>
-
-        {% if messages %}
-        <div class="error-message">
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
+        <p><a href="{% url 'password_reset_request' %}" class="forgot-password-link">Forgot Password?</a></p>
+                <!-- Error Message Section -->
+                
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p style="color: red;">{{ message }}</p>
+                    {% endfor %}
+                </div>
+        
     </div>
 </body>
 
@@ -163,6 +161,7 @@
         function togglePassword(id) {
             var field = document.getElementById(id);
             field.type = field.type === "password" ? "text" : "password";
+            
         }
     </script>
 </body>
