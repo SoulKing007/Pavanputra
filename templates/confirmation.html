@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Booking Confirmation</h2>
+
+<p>Thank you for booking, {{ user.username }}!</p>
+<p>Tour: {{ booking.tour.name }}</p>
+<p>Number of People: {{ booking.number_of_people }}</p>
+<p>Date: {{ booking.tour.date }}</p>
+
+<a href="{% url 'dashboard' %}" class="btn btn-success">Go to Dashboard</a>
+{% endblock %}

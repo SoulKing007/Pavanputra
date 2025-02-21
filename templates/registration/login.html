@@ -104,64 +104,69 @@
 
     .toggle-link:hover { text-decoration: underline; }
 
-    .error-message {
+    .message {
     color: red;
     margin-top: 20px;  /* Adds space between the form and the error message */
     font-size: 14px;
     text-align: center;  /* Centers the error messages */
 }
 
-.error-message ul {
+.message ul {
     list-style-type: none;  /* Removes the default bullet points */
     padding: 0;
 }
 
-.error-message li {
+.message li {
     margin: 5px 0;  /* Adds space between each error message */
 }
 
     </style>
 </head>
 <body>
+    <!-- Display Messages -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissable fade show "
+                role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Logo -->
     <div class="logo">
         <a href="/">
             <span class="pavan">Pavan</span><span>Putra</span>
         </a>
     </div>
 
+    <!-- Login Form -->
     <div class="container">
         <h2>Login</h2>
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        <input type="username" name="username" id="username" placeholder="Usernmae" value="{{ username }}" required>
-        <div class="password-wrapper">
-            <input type="password" name="password" id="login-password" placeholder="Password" required>
-            <span class="eye-icon" onclick="togglePassword('login-password')">👁️</span>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            
+            <div class="password-wrapper">
+                <input type="password" name="password" id="login-password" placeholder="Password" required>
+                <span class="eye-icon" onclick="togglePassword('login-password')">👁️</span>
+            </div>
 
-        <p>Don't have an account? <a href="{% url 'signup' %}" class="toggle-link">Signup here</a></p>
+            <button type="submit">Login</button>
+        </form>
 
-        <!-- Forgot Password Link -->
-        <p><a href="{% url 'password_reset_request' %}" class="forgot-password-link">Forgot Password?</a></p>
-                <!-- Error Message Section -->
-                
-                <div class="error-message">
-                    {% for message in messages %}
-                        <p style="color: red;">{{ message }}</p>
-                    {% endfor %}
-                </div>
-        
+        <p>Don't have an account? <a href="{% url 'signup' %}">Signup here</a></p>
+        <p><a href="{% url 'password_reset_request' %}">Forgot Password?</a></p>
     </div>
-</body>
 
-
+    <!-- JavaScript for Show/Hide Password -->
     <script>
         function togglePassword(id) {
             var field = document.getElementById(id);
             field.type = field.type === "password" ? "text" : "password";
-            
         }
     </script>
 </body>

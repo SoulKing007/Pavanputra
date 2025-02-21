@@ -1,15 +1,15 @@
-<!-- templates/accounts/profile.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-</head>
-<body>
-    <h2>Welcome, {{ user.username }}!</h2>
-    <p>Email: {{ user.email }}</p>
+{% extends "base.html" %}
 
-    <a href="{% url 'logout' %}">Logout</a>  <!-- Add logout link -->
-</body>
-</html>
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-box">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        
+        <a href="{% url 'dashboard' %}" class="btn btn-primary">View Booked Tours</a> <!-- Link to Dashboard -->
+        <a href="{% url 'logout_confirm' %}" class="btn btn-danger">Logout</a> <!-- Styled logout button -->
+    </div>
+</div>
+{% endblock %}

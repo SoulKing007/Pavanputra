@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -11,7 +12,7 @@ import string
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import timedelta
-from .models import OTP  # We'll create a model to store OTPs
+from .models import OTP, Booking  # We'll create a model to store OTPs
 # Home page view
 def index(request):
     return render(request, 'index.html')
@@ -21,69 +22,68 @@ def signup_view(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
-            # Get cleaned data from the form
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            # Get the active user model (CustomUser or default User)
             User = get_user_model()
 
-            # Check if username/email already exists
             if User.objects.filter(username=username).exists():
                 messages.error(request, "Username already taken")
             elif User.objects.filter(email=email).exists():
                 messages.error(request, "Email already in use")
             else:
-                # Create the user with create_user (handles password hashing)
                 user = User.objects.create_user(username=username, email=email, password=password)
-                user.save()
+                messages.success(request, "Account created successfully! You can now log in.")
+                return redirect('login')  # Redirect only if user is created
 
-                messages.success(request, "Account created successfully!")
-                return redirect('login')  # Redirect to login page after successful signup
-        else:
-            messages.error(request, "Form is not valid")
+        # If form is invalid, show errors
+        messages.error(request, "Please correct the errors below.")
+
     else:
-        form = SignupForm()  # Create an empty form instance
+        form = SignupForm()
 
-    return render(request, "registration/signup.html", {'form': form})  # Pass the form to the template
-
+    return render(request, "registration/signup.html", {'form': form})
 
 # Login view
 
 def login_view(request):
-    # Check if the HTTP request method is POST (form submission)
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        
-        # Check if a user with the provided username exists
+
+        # Check if the username exists
         if not User.objects.filter(username=username).exists():
-            # Display an error message if the username does not exist
             messages.error(request, 'Invalid Username')
-            return redirect('registration/login/')
-        
-        # Authenticate the user with the provided username and password
-        user = authenticate(username=username, password=password)
-        
+            return redirect('login')
+
+        # Authenticate user
+        user = authenticate(request, username=username, password=password)
+
         if user is None:
-            # Display an error message if authentication fails (invalid password)
             messages.error(request, "Invalid Password")
-            return redirect('registration/login/')
-        else:
-            # Log in the user and redirect to the home page upon successful login
-            login(request, user)
-            return redirect('index')
-    
-    # Render the login page template (GET request)
+            return redirect('login')
+
+        # Log in the user
+        login(request, user)
+
+        # Redirect to intended page (if coming from booking) or profile
+        next_url = request.GET.get('next')  
+        return redirect(next_url if next_url else 'profile')  # Redirect properly
+
     return render(request, 'registration/login.html')
 
 
 # Logout view
 def logout_view(request):
-    logout(request)
-    messages.success(request, "Logged out successfully.")
-    return redirect('registration/logout.html')  # Redirect to login page after logout
+    if request.method == "POST":
+        logout(request)
+        return redirect('login')  # Redirect to login page after logout
+    return redirect('logout_confirm')  
+
+@login_required
+def logout_confirm_view(request):
+    return render(request, 'registration/logout.html')
 
 import logging
 
@@ -168,3 +168,67 @@ def password_reset_verify(request):
 @login_required
 def profile_view(request):
     return render(request, 'accounts/profile.html') 
+
+
+from .forms import BookingForm
+from .models import Tour
+
+@login_required(login_url='/login/')  # Redirect to login if not authenticated
+def booking_view(request):
+    tours = Tour.objects.filter(available_slots__gt=0)
+
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            tour = form.cleaned_data['tour']
+            number_of_people = form.cleaned_data['number_of_people']
+
+            # Check slot availability
+            if tour.available_slots >= number_of_people:
+                booking = form.save(commit=False)
+                booking.user = request.user
+                booking.save()
+
+                # Update available slots
+                tour.available_slots -= number_of_people
+                tour.save()
+
+                messages.success(request, 'Booking successful!')
+                return redirect('booking_confirmation', booking_id=booking.id)
+            else:
+                messages.error(request, 'Not enough available slots.')
+
+    else:
+        form = BookingForm()
+
+    return render(request, 'booking_page.html', {'form': form, 'tours': tours})
+
+@login_required(login_url='/login/')
+def booking_confirmation(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    return render(request, 'confirmation.html', {'booking': booking})
+
+@login_required
+def dashboard(request):
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, 'dashboard.html', {'bookings': bookings})
+
+def base(request):
+    return render(request, 'base.html')
+
+
+from .models import State, City
+
+def get_states(request):
+    states = list(State.objects.values('state_id', 'state_name'))
+    return JsonResponse({'states': states})
+
+def get_cities(request, state_id):
+    cities = list(City.objects.filter(state__state_id=state_id).values('city_id', 'city_name'))
+    return JsonResponse({'cities': cities})
+
+def delete_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)  # Ensure the user owns the booking
+    booking.delete()
+    messages.success(request, "Your booking has been deleted successfully.")
+    return redirect('dashboard')
