@@ -387,26 +387,22 @@ html,body{
 
 .desc-tabs .nav-tabs>li.active>a{
 	color: #fff;
-    background: #00d8ff;
+    background: #ffffff;
     cursor: default;
     font-size: 20px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
-    -webkit-transition: .5s; 
+   /* -webkit-transition: .5s; 
 	-moz-transition:.5s; 
 	-ms-transition:.5s; 
 	-o-transition:.5s;
-    transition: .5s;
+    transition: .5s;*/
 }
-.desc-tabs .nav-tabs>li.active>a:focus, 
-.desc-tabs .nav-tabs>li.active>a:hover {
-    color: #565a5c;
-    text-decoration: none;
-}
-.desc-tabs .nav-tabs>li>a{
-	color: #fff;
-    background: #00d8ff;
+
+.desc-tabs .nav-tabs > li > a {
+    color: grey !important; /* Set text color to grey */
+    background: #ffffff !important; /* Ensure background stays white */
     cursor: default;
     font-size: 20px;
     font-weight: 500;
@@ -414,19 +410,10 @@ html,body{
     text-transform: capitalize;
     padding: 17px 40px 17px 46px;
     border: 0;
-    -webkit-transition: .5s; 
-	-moz-transition:.5s; 
-	-ms-transition:.5s; 
-	-o-transition:.5s;
-    transition: .5s;
+    transition: none !important; /* Disable hover transition */
 }
-.single-travel-boxes .nav>li>a:focus, 
-.single-travel-boxes .nav>li>a:hover {
-	color: #565a5c;
-	background: #fff;
-	border: 0;
-    text-decoration: none;
-}
+
+
 .desc-tabs .nav-tabs>li>a>i{
 	padding-right: 6px;
 }
