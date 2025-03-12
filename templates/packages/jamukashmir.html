@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Jammu and Kashmir - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Jammu and Kashmir</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/vaisnodevi.jpg' %}" alt="Vaishnodevi Temple">
+        <div class="overlay">Vaishnodevi Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/hajanvalley.jpg' %}" alt="Hajan Valley">
+        <div class="overlay">Hajan Valley</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/gulmarg.jpg' %}" alt="Gulmarg">
+        <div class="overlay">Gulmarg</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/srinagar.jpg' %}" alt="Srinagar">
+        <div class="overlay">Srinagar</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/dallake.jpg' %}" alt="Dal Lake">
+        <div class="overlay">Dal Lake</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/raghunathtemple.jpg' %}" alt="Raghunath Temple">
+        <div class="overlay">Shree Raghunath Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/doothpathri.jpg' %}" alt="Doothpathri">
+        <div class="overlay">Doothpathri</div>
+    </div>
+
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 16 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Jammu and Kashmir Section -->
+<div class="about-section">
+    <h2>What to Do in Jammu and Kashmir</h2>
+    <p>Explore the breathtaking hill stations like Gulmarg and Pahalgam.</p>
+    <p>Visit the ancient monasteries in Leh and Hemis.</p>
+    <p>Enjoy adventure sports like skiing in Gulmarg and river rafting in Lidder River.</p>
+    <p>Trek through the mesmerizing landscapes of the Great Lakes and Tarsar Marsar.</p>
+    <p>Experience the tranquility of beautiful lakes like Dal Lake and Wular Lake.</p>
+    <p>Seek blessings at revered temples like Vaishno Devi and Amarnath Cave Temple.</p>
+    <p>Witness the stunning beauty of Sonmarg and the snow-covered landscapes of Drass.</p>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Jammu and Kashmir</h2>
+    <p>
+        Jammu and Kashmir is a region administered by India as a union territory and consists of 
+        the southern portion of the larger Kashmir region, which has been the subject of a dispute 
+        between India and Pakistan since 1947 and between India and China since 1959.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'goa' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Goa">
+                <div class="overlay">Goa</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+        <a href="{% url 'maharashtra' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/matheran.jpg' %}" alt="Maharashtra">
+                <div class="overlay">Maharashtra</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

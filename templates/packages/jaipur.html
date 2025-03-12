@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Jaipur - City Showcase{% endblock %}
+
+<!-- Added CSS for grid item styling -->
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Jaipur</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/amberfort.jpeg' %}" alt="Amber Fort">
+        <div class="overlay">Amber Fort</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/jaipurpalace.jpg' %}" alt="Jaipur Palace">
+        <div class="overlay">Jaipur Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/hawamahal.jpg' %}" alt="Hawa Mahal">
+        <div class="overlay">Hawa Mahal</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/nahaegrah.jpg' %}" alt="Nahargarh Fort">
+        <div class="overlay">Nahargarh Fort</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/jantarm.jpg' %}" alt="Jantar Mantar">
+        <div class="overlay">Jantar Mantar</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/birlatemple.jpg' %}" alt="Birla Temple">
+        <div class="overlay">Birla Temple</div>
+    </div>
+
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/jalmahal.jpg' %}" alt="Jal Mahal">
+        <div class="overlay">Jal Mahal</div>
+    </div>
+
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 5 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Jaipur Section -->
+<div class="about-section">
+    <h2>What to Do in Jaipur</h2>
+    <p>Explore the magnificent historical landmarks like Amber Fort and City Palace.</p>
+    <p>Visit the famous Hawa Mahal and admire its stunning architecture.</p>
+    <p>Enjoy adventure activities like a thrilling hot air balloon ride over the Pink City.</p>
+    <p>Trek through the scenic trails around Nahargarh Fort for a panoramic city view.</p>
+    <p>Experience the serenity of beautiful lakes like Man Sagar Lake near Jal Mahal.</p>
+    <p>Seek blessings at ancient temples like Govind Dev Ji Temple and Birla Mandir.</p>
+    <p>Witness the breathtaking beauty of Jaipur’s royal heritage at Jaigarh and Nahargarh Forts.</p>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Jaipur</h2>
+    <p>
+        Jaipur, the capital of Rajasthan, is famously known as the Pink City due to its 
+        uniquely colored buildings. It is home to stunning historical landmarks like Amber Fort, 
+        Hawa Mahal, and City Palace, which showcase the city’s rich heritage and architectural brilliance. 
+    </p>
+</div>
+
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'jammu' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/srinagar.jpg' %}" alt="Jammu Kashmir">
+                <div class="overlay">Jammu Kashmir</div>
+            </div>
+        </a>
+        <a href="{% url 'varanasi' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/anikarnika.jpg' %}" alt="Varanasi">
+                <div class="overlay">Varanasi</div>
+            </div>
+        </a>
+        <a href="{% url 'maharashtra' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/matheran.jpg' %}" alt="Maharashtra">
+                <div class="overlay">Maharashtra</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

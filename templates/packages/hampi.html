@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Hampi - City Showcase{% endblock %}
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Hampi</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Stables.jpg' %}" alt="Elephant Stables">
+        <div class="overlay">Elephant Stables</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Virupaksha.jpg' %}" alt="Virupaksha Temple">
+        <div class="overlay">Virupaksha Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Vitthala.jpg' %}" alt="Jaganmohan Palace">
+        <div class="overlay">Jaganmohan Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Narasimha.jpg' %}" alt="Shri Lakshmi Narasimha Temple">
+        <div class="overlay">Shri Lakshmi Narasimha Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Mathanga.jpg' %}" alt="Mathanga Hill">
+        <div class="overlay">Mathanga Hill</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Raama.jpg' %}" alt="Hazara Raama Temple">
+        <div class="overlay">Hazara Raama Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Lotus.jpg' %}" alt="Lotus Mahal">
+        <div class="overlay">Lotus Mahal</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 4 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to do in Hampi Section -->
+<div class="about-section">
+    <h2>What to do in Hampi</h2>
+    <ul>
+        <p>Explore the ancient ruins of the Vijayanagara Empire at Hampi.</p>
+<p>Visit the iconic Virupaksha Temple, a UNESCO World Heritage site.</p>
+<p>Climb Matanga Hill for a breathtaking sunrise view of Hampi.</p>
+<p>Marvel at the stone chariot in the Vittala Temple complex.</p>
+<p>Take a coracle boat ride on the Tungabhadra River.</p>
+<p>Wander through the bustling Hampi Bazaar and shop for souvenirs.</p>
+<p>Experience the rich history and culture at the Queen’s Bath and Lotus Mahal.</p>
+
+    </ul>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Hampi</h2>
+    <p>
+        Hampi, a UNESCO World Heritage Site in Karnataka, is renowned for its stunning ruins of the Vijayanagara Empire. 
+        Once a thriving medieval capital, it now showcases majestic temples, intricate carvings, and grand structures. 
+        Surrounded by boulder-strewn landscapes and the Tungabhadra River, Hampi is a paradise for history lovers and explorers.
+    </p>
+</div>
+
+<!-- Suggested Places Section -->
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'mysore' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/mysore1.jpg' %}" alt="Mysore">
+                <div class="overlay">Mysore</div>
+            </div>
+        </a>
+        <a href="{% url 'chennai' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/chennaip.jpg' %}" alt="Chennai">
+                <div class="overlay">Chennai</div>
+            </div>
+        </a>
+        <a href="{% url 'delhi' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/laxminarayan.jpg' %}" alt="Delhi">
+                <div class="overlay">Delhi</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

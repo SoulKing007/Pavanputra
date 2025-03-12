@@ -2,30 +2,6 @@ $(document).ready(function(){
 
 	"use strict";
 
-    
-
-        /*==================================
-
-* Author        : "ThemeSine"
-
-* Template Name : Travel HTML Template
-
-* Version       : 1.0
-
-==================================== */
-
-
-        /*=========== TABLE OF CONTENTS ===========
-
-1. Scroll To Top
-2. Range js
-3. Countdown timer
-4. owl carousel
-5. datepicker
-6. Smooth Scroll spy
-7. Animation support
-======================================*/
-    
 
     // 1. Scroll To Top 
 
@@ -61,9 +37,9 @@ $(document).ready(function(){
             range: true,
             min: 0,
             max: 99000,
-            values: [ 9999, 30999 ],
+            values: [ 7000, 30999 ],
             slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
             }
         });
         $( "#amount" ).val( "₹" + $( "#slider-range" ).slider( "values", 0 ) +

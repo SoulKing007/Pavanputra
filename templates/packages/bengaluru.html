@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Bengaluru - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Bengaluru</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/bengalurupalace.jpg' %}" alt="City Skyline">
+        <div class="overlay">bengaluru Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/ubcity.jpg' %}" alt="Historic Streets">
+        <div class="overlay">UB city</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/jawanehrup.jpg' %}" alt="Green Parks">
+        <div class="overlay">Jawaharlal Nehru Planetarium</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/phoenixmarket.jpg' %}" alt="Nightlife">
+        <div class="overlay">Phoenix Marketcity</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/someshwara.jpg' %}" alt="Nightlife">
+        <div class="overlay">Someshwara Swamy Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/tipusultan.jpg' %}" alt="Landmarks">
+        <div class="overlay">Tipu Sultan's Summer Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/doddaalada.jpg' %}" alt="Landmarks">
+        <div class="overlay">Dodda Aalada Mara</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 18 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Bengaluru Section -->
+<div class="about-section">
+    <h2>What to Do in Bengaluru</h2>
+    <div class="activities-list">
+        <p>Visit the iconic Bangalore Palace and Tipu Sultan’s Summer Palace.</p>
+        <p>Explore the lush greenery of Lalbagh Botanical Garden and Cubbon Park.</p>
+        <p>Experience the vibrant nightlife at MG Road and Indiranagar.</p>
+        <p>Discover the rich heritage at the National Gallery of Modern Art and Karnataka Chitrakala Parishath.</p>
+        <p>Take a stroll around the picturesque Ulsoor Lake.</p>
+        <p>Enjoy a shopping spree at Commercial Street and Brigade Road.</p>
+        <p>Indulge in delicious South Indian cuisine at popular eateries like MTR and Vidyarthi Bhavan.</p>
+    </div>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Bengaluru</h2>
+    <p>
+        Bengaluru, the capital of Karnataka, is known as the "Silicon Valley of India" due
+        to its status as a leading tech hub. The city is a perfect blend of modern innovation
+        and cultural heritage, boasting a vibrant nightlife, lush parks, and historic landmarks.
+    </p>
+</div>
+
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'kolakata' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/mpbirla.jpg' %}" alt="Cafe">
+                <div class="overlay">Kolakata</div>
+            </div>
+        </a>
+        <a href="{% url 'himachal_pradesh' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/shim.jpg' %}" alt="Cafe">
+                <div class="overlay">Himachal Pradesh</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Cafe">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dwarka - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Dwarka</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/dwarka.jpg' %}" alt="City Skyline">
+        <div class="overlay">Shree Dwarkadhish Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/dwarkadhis.jpg' %}" alt="Historic Streets">
+        <div class="overlay">Dwarkadhish</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Gomti.jpg' %}" alt="Green Parks">
+        <div class="overlay">Gomti Ghat</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Rukmini.jpg' %}" alt="Nightlife">
+        <div class="overlay">Rukmini Devi Mandir</div>
+    </div>
+
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 3 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<div class="about-section">
+    <h2>What to do in Dwarka</h2>
+    <p>Visit Dwarkadhish Temple for blessings, then go to Bet Dwarka.</p>
+    <p>Relax at Shivrajpur Beach and visit Rukmini Devi Temple.</p>
+    <p>Walk across Sudama Setu for scenic views.</p>
+    <p>Witness Aarti at Dwarkadhish Temple and Gomti Ghat for a holy dip.</p>
+    <p>Explore Nageshwar Jyotirlinga, one of Shiva’s 12 sacred shrines.</p>
+    <p>Visit Gopi Talav, a serene lake linked to Krishna’s pastimes.</p>
+    <p>Discover Bhadkeshwar Mahadev Temple, surrounded by the sea.</p>
+    <p>Enjoy local Gujarati cuisine and shop for souvenirs.</p>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Dwarka</h2>
+    <p>
+        Dwarka, one of the Char Dham pilgrimage sites, is an ancient city in Gujarat,
+        believed to be Lord Krishna’s kingdom. It is home to the Dwarkadhish Temple, Bet Dwarka,
+        and the sacred Gomti Ghat. The city is rich in mythology, temples, and coastal beauty,
+        attracting devotees and tourists alike.
+    </p>
+</div>
+
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'kolakata' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/mpbirla.jpg' %}" alt="Kolakata">
+                <div class="overlay">Kolakata</div>
+            </div>
+        </a>
+        <a href="{% url 'bengaluru' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/benguluruindex.jpg' %}" alt="Bengaluru">
+                <div class="overlay">Bengaluru</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

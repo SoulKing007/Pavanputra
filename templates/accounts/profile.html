@@ -8,8 +8,8 @@
         <h2>Welcome, {{ user.username }}!</h2>
         <p><strong>Email:</strong> {{ user.email }}</p>
         
-        <a href="{% url 'dashboard' %}" class="btn btn-primary">View Booked Tours</a> <!-- Link to Dashboard -->
-        <a href="{% url 'logout_confirm' %}" class="btn btn-danger">Logout</a> <!-- Styled logout button -->
+        <a href="{% url 'dashboard' %}" class="btn-primary">View Booked Tours</a> <!-- Link to Dashboard -->
+        <a href="{% url 'logout_confirm' %}" class="btn-danger">Logout</a> <!-- Styled logout button -->
     </div>
 </div>
 {% endblock %}

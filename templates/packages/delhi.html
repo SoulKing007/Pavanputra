@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Delhi - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+    <h2>Delhi</h2>
+
+    <!-- Grid Image Section -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/rashtrapati.jpg' %}" alt="Rashtrapati Bhavan">
+            <div class="overlay">Rashtrapati Bhavan</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/qutub.jpg' %}" alt="Qutub Minar">
+            <div class="overlay">Qutub Minar</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/lodhigarden.jpg' %}" alt="Lodhi Garden">
+            <div class="overlay">Lodhi Garden</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/hauzkhas.jpg' %}" alt="Hauz Khas Village">
+            <div class="overlay">Hauz Khas Village</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/atlanticwater.jpg' %}" alt="Atlantic Water World">
+            <div class="overlay">Atlantic Water World</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/laxminarayan.jpg' %}" alt="Laxminarayan Temple">
+            <div class="overlay">Laxminarayan Temple</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/laxminarayan.jpg' %}" alt="Laxminarayan Temple">
+            <div class="overlay">Laxminarayan Temple</div>
+        </div>
+    </div>
+
+    <!-- Book Now Button -->
+    <div class="book-now-container">
+        <a href="{% url 'booking' 7 %}">
+            <button class="book-now-btn">Book Now</button>
+        </a>
+    </div>
+
+    <div class="about-section">
+        <h2>What to do in Delhi</h2>
+        <p>Witness the grandeur of the Republic Day parade at Rajpath.</p>
+        <p>Explore the historic Red Fort, a UNESCO World Heritage Site.</p>
+        <p>Visit India Gate, a tribute to soldiers who sacrificed their lives.</p>
+        <p>Experience spirituality at the Akshardham Temple and Lotus Temple.</p>
+        <p>Stroll through Chandni Chowk and savor Delhi’s famous street food.</p>
+        <p>Discover the Mughal architecture of Humayun’s Tomb and Qutub Minar.</p>
+        <p>Enjoy a shopping spree at Connaught Place and Dilli Haat.</p>
+        <p>Take a rickshaw ride in Old Delhi for a glimpse of its vibrant culture.</p>
+        <p>Visit the Rashtrapati Bhavan and Parliament House.</p>
+        <p>Relax at Lodhi Garden or Hauz Khas Village.</p>
+    </div>
+
+    <!-- About City Section -->
+    <div class="about-section">
+        <h2>About Delhi</h2>
+        <p>
+            Delhi, the capital of India, is a vibrant metropolis that seamlessly blends history 
+            with modernity. Rich in cultural heritage, it is home to iconic landmarks such as the 
+            Red Fort, India Gate, Qutub Minar, and Humayun’s Tomb.
+        </p>
+    </div>
+
+    <!-- You Might Also Like Section -->
+    <div>
+        <h3>You Might Also Like</h3>
+        <div class="gri-container">
+            <a href="{% url 'maharashtra' %}">
+                <div class="gri-item">
+                    <img src="{% static 'assets/images/tourpack/lonavala.jpg' %}" alt="Maharashtra">
+                    <div class="overlay">Maharashtra</div>
+                </div>
+            </a>
+            <a href="{% url 'varanasi' %}">
+                <div class="gri-item">
+                    <img src="{% static 'assets/images/tourpack/anikarnika.jpg' %}" alt="Varanasi">
+                    <div class="overlay">Varanasi</div>
+                </div>
+            </a>
+            <a href="{% url 'ladak' %}">
+                <div class="gri-item">
+                    <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                    <div class="overlay">Leh Ladakh</div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

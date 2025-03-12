@@ -1,4 +1,4 @@
-#!C:\Users\DELL\Desktop\Learning\pavanputra\venv\Scripts\python.exe
+#!C:\Users\DELL\Documents\GitHub\Pavanputra\venv\Scripts\python.exe
 
 import datetime
 import os

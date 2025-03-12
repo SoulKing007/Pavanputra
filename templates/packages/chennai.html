@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Chennai - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+    <h2>Chennai</h2>
+
+    <!-- Grid Image Section -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/marinabeach.jpg' %}" alt="Marina Beach">
+            <div class="overlay">Marina Beach</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/ashtalakshmi.jpg' %}" alt="Shri Ashtalakshmi Temple">
+            <div class="overlay">Shri Ashtalakshmi <br>Temple</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/vgpsnow.jpg' %}" alt="VGP Snow Kingdom">
+            <div class="overlay">VGP Snow Kingdom</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/kapaleeshwarar.jpg' %}" alt="Kapaleeshwarar Temple">
+            <div class="overlay">Kapaleeshwarar Temple</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/guindypark.jpg' %}" alt="Guindy National Park">
+            <div class="overlay">Guindy National Park</div>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/vivekananda.jpg' %}" alt="Vivekananda House">
+            <div class="overlay">Vivekananda House</div>
+        </div>
+    </div>
+
+    <!-- Book Now Button -->
+    <div class="book-now-container">
+        <a href="{% url 'booking' 15 %}">
+            <button class="book-now-btn">Book Now</button>
+        </a>
+    </div>
+
+    <div class="about-section">
+        <h2>What to Do in Chennai</h2>
+        <p>Explore the scenic Marina Beach, one of the longest urban beaches in the world.</p>
+        <p>Visit the historic Kapaleeshwarar Temple, known for its Dravidian architecture.</p>
+        <p>Admire the colonial-era charm of Fort St. George and its museum.</p>
+        <p>Experience spiritual serenity at San Thome Basilica, a famous pilgrimage site.</p>
+        <p>Discover Chennai’s artistic heritage at Kalakshetra Foundation.</p>
+        <p>Shop for exquisite silk sarees at T. Nagar’s bustling markets.</p>
+        <p>Enjoy authentic South Indian delicacies at popular eateries like Saravana Bhavan.</p>
+        <p>Explore the Government Museum, home to rare artifacts and sculptures.</p>
+        <p>Watch a Bharatanatyam performance, a classical dance form of Tamil Nadu.</p>
+        <p>Take a relaxing stroll along Elliot’s Beach in Besant Nagar.</p>
+    </div>
+
+    <!-- About City Section -->
+    <div class="about-section">
+        <h2>About Chennai</h2>
+        <p>
+            Chennai, the capital of Tamil Nadu, is a fascinating tourist destination that blends history,
+            culture, and modern attractions. Known for its stunning coastline, Marina Beach is one of the
+            longest urban beaches in the world, offering 
+            breathtaking sunrise views. The city is also home to magnificent temples like the Kapaleeshwarar 
+            Temple and historic churches such as San Thome Basilica.
+        </p>
+    </div>
+
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'kolakata' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/mpbirla.jpg' %}" alt="Kolkata">
+                <div class="overlay">Kolkata</div>
+            </div>
+        </a>
+        <a href="{% url 'goa' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Goa">
+                <div class="overlay">Goa</div>
+            </div>
+        </a>
+        <a href="{% url 'bengaluru' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/benguluruindex.jpg' %}" alt="Bengaluru">
+                <div class="overlay">Bengaluru</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,322 @@
+body{
+    position: relative;
+	font-size:14px;
+	color: #222222;
+	background: #ffffff;
+	font-family: 'Poppins', sans-serif;
+    align-items: center;
+    max-width:1920px;
+    justify-content: center;
+    margin:0 auto;
+	overflow-x:hidden;
+
+}
+.profile-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;      /* Makes it round */
+    border: 0;
+    object-fit: cover;
+    background: #d8d8d863;
+    display: flex;           /* Aligns text inside button */
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;          /* Even spacing */
+    cursor: pointer;
+    transition: 0.3s ease;   /* Smooth hover effect */
+}
+
+.profile-btn:hover {
+    background: #00d8ff63;   /* Light hover effect */
+}
+
+  .book-btn1 {
+	background: #333;
+    border: 0px solid #00d8ff;
+    width: 120px;
+    height: 40px;
+    white-space: nowrap;
+    text-align: center;
+    color: #fff;
+    font-size:14px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    border-radius: 15px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+.book-btn1:hover{
+    color: #fff;
+    background: #00d8d5;
+    border: 1px solid #00d8d5;
+}/*book-btn*/
+.main-menu  .nav  li.active a,
+.main-menu  .nav  li a:hover,
+.main-menu .nav  li a:focus{
+    color: #00d8ff;
+    background-color:transparent;
+}
+
+.main-menu .nav li {
+    position: relative;
+    padding: 0 20px;                /* Even horizontal padding */
+    margin: 0;                      /* Remove extra margin */
+    transition: all 0.2s linear;
+}
+
+
+.main-menu .nav li a {
+    padding: 10px 0;               /* Consistent vertical padding */
+    color: #fff;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.25s ease-in-out;
+}
+.main-menu .nav a:before{
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 2px;
+    bottom: -2.4px;
+    left: 0;
+    background: transparent;
+    -webkit-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    
+}
+.main-menu .nav li.active  a:before,
+.main-menu .nav a:hover:before{
+    background: #00d8ff;
+    width: 100%;
+}
+/* tooggle */
+.main-menu .navbar-toggle {
+    margin-top: 5px;
+    border: 1px solid transparent;  /* Remove border */
+    background-color: transparent;  /* Clean background */
+    color: #00d8ff;
+    padding: 5px 10px;              /* Consistent padding */
+}
+.main-menu .navbar-toggle {
+    color: #00d8ff;
+}
+.main-menu .navbar-default .navbar-toggle:focus, 
+.main-menu .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+
+
+.home-border{
+    border-top:2px solid #fff;
+}
+.container{
+            margin-top: 10px;  
+            align-items: center;
+        }
+        .header-area {
+    position: fixed;
+    padding-top: 24px;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+    background-color: #333;  
+}
+
+.content {
+    padding-top: 70px;  
+    background-color: rgb(236, 236, 236);
+}
+/*.logo*/
+.logo a, .logo a:hover, .logo a:focus {
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 0;               /* Removed top margin to align vertically */
+    padding: 0;              /* Removed padding for proper alignment */
+    display: flex;           /* Align text and logo vertically */
+    align-items: center;     /* Center items vertically */
+}
+
+.logo a span {
+    color: #00d8ff;
+    text-transform: capitalize;
+}
+
+.btn-primary, .btn-danger {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    outline: none;              
+    -webkit-appearance: none;  
+    appearance: none;         
+}
+
+.btn-primary {
+    background-color: #3498db;  /* Soft blue */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;  /* Darker blue for hover */
+    transform: translateY(-2px);
+    border-color: #2980b9;
+}
+
+.btn-danger {
+    background-color: #e74c3c;  /* Soft red */
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;  /* Darker red for hover */
+    transform: translateY(-2px);
+    border-color: #c0392b;
+}
+
+.btn-primary, .btn-primary:hover, 
+.btn-danger, .btn-danger:hover {
+    border-width: 2px;
+}
+.btn-primary:hover, .btn-danger:hover {
+    font-size: 15px;
+    padding: 8px 20px;
+}
+
+.btn-primary + .btn-danger {
+    margin-left: 10px;
+}
+
+.packages {
+    padding: 0px 0 0px;
+}
+.packages-content {
+    margin-top: 65px;
+}
+div.single-package-item {
+    border-radius: 8px !important;
+}
+/* single-package-item */
+.single-package-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 480px; /* Fixed height to make all boxes the same size */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff; /* White background color */
+    transform: translateY(0); /* Initial position */
+}
+
+.single-package-item:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    transform: translateY(-5px); /* Moves box up slightly on hover */
+}
+
+.single-package-item-txt {
+    padding: 0 25px;
+    flex-grow: 1; /* Ensure content fills available space */
+}
+.single-package-item img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover; /* Ensures images fit within fixed height */
+    height: 200px; /* Fixed height for images for consistency */
+}
+.single-package-item h3 {
+    position: relative;
+    font-size: 20px;
+    color: #565a5c;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px 0;
+}
+.single-package-item h3:after {
+    position: absolute;
+    content: " ";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ebebeb;
+}
+.packages-para {
+    padding: 17px 0 0;
+    text-transform: capitalize;
+}
+.packages-para p {
+    font-size: 14px;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+.packages-para p span {
+    display: inline-block;
+    width: 150px;
+}
+.packages-review p i {
+    color: #ffdf00;
+    font-size: 16px;
+}
+.packages-review span {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+}
+.about-view.packages-btn {
+    width: 110px;
+    height: 35px;
+    font-size: 14px;
+    color: #fff;
+    text-transform: capitalize;
+    transition: .5s;
+}
+.about-view.packages-btn:hover {
+    box-shadow: 0 5px 20px rgba(14, 15, 18, .3);
+}
+.book-now-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.about-view.packages-btn1 {
+    width: 110px;
+    height: 35px;
+    align-items: center;
+    font-size: 14px;
+    color: #fff;
+    text-transform: capitalize;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+.about-view.packages-btn1:hover {
+    box-shadow: 0 5px 20px rgba(14, 15, 18, .3);
+}
+.single-package-item:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}

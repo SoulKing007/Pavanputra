@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Varanasi - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Varanasi</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/anikarnika.jpg' %}" alt="Manikarnika Ghat">
+        <div class="overlay">Manikarnika Ghat</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Dashashwamedh.jpg' %}" alt="Dashashwamedh Ghat">
+        <div class="overlay">Dashashwamedh Ghat</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Vishwanath.jpg' %}" alt="Shri Kashi Vishwanath Temple">
+        <div class="overlay">Shri Kashi Vishwanath Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Sarnath.jpg' %}" alt="Dhamek Stupa">
+        <div class="overlay">Dhamek Stupa</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Ramnagar.jpg' %}" alt="Ramnagar Fort">
+        <div class="overlay">Ramnagar Fort</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Hanuman.jpg' %}" alt="Sankat Mochan Hanuman Temple">
+        <div class="overlay">Sankat Mochan Hanuman Temple</div>
+    </div>  <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Dashashwamedh.jpg' %}" alt="Dashashwamedh Ghat">
+        <div class="overlay">Dashashwamedh Ghat</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 9 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Varanasi Section -->
+<div class="about-section">
+    <h2>What to do in Varanasi</h2>
+    <p>Attend the mesmerizing Ganga Aarti at Dashashwamedh Ghat.</p>
+    <p>Take a sunrise boat ride along the Ganges River.</p>
+    <p>Visit the sacred Kashi Vishwanath Temple.</p>
+    <p>Explore the historic Sarnath, where Buddha gave his first sermon.</p>
+    <p>Wander through the bustling lanes of the old city.</p>
+    <p>Savor traditional Banarasi cuisine and lassi.</p>
+    <p>Shop for exquisite Banarasi silk sarees.</p>
+</div>
+
+<!-- About Varanasi Section -->
+<div class="about-section">
+    <h2>About Varanasi</h2>
+    <p>
+        Varanasi, also known as Benares or Kashi, is one of the world's oldest 
+        continuously inhabited cities, situated along the banks of the Ganges 
+        River in northern India. Renowned as a major religious hub, it holds profound 
+        significance in Hindu traditions of pilgrimage, death, and mourning. 
+        The city's rich cultural heritage is evident in its historic ghats, temples,
+        and vibrant arts scene.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<h3>You Might Also Like</h3>
+<div class="grid-container">
+    <a href="{% url 'jammu' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/srinagar.jpg' %}" alt="Jammu Kashmir">
+            <div class="overlay">Jammu Kashmir</div>
+        </div>
+    </a>
+    <a href="{% url 'ladak' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/leh palace.jpg' %}" alt="Leh Ladakh">
+            <div class="overlay">Leh Ladakh</div>
+        </div>
+    </a>
+    <a href="{% url 'jaipur' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/jaipurpalace.jpg' %}" alt="Jaipur">
+            <div class="overlay">Jaipur</div>
+        </div>
+    </a>
+</div>
+{% endblock %}

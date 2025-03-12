@@ -1,0 +1,10 @@
+<!-- templates/payment_failed.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Payment Failed!</h2>
+    <p>Your payment could not be processed. Please try again.</p>
+    <a href="{% url 'my_bookings' %}" class="btn btn-primary">Go to My Bookings</a>
+</div>
+{% endblock %}

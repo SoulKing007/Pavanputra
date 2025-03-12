@@ -1,0 +1,38 @@
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+
+# Byte-compiled / temporary files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+.Venv/
+ENV/
+env/
+.virtualenv/
+
+# Django specific
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.production
+.env.testing
+
+# VS Code settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Logs and debug files
+*.log

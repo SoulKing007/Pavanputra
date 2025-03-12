@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Maharashtra - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Maharashtra</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/lonavala.jpg' %}" alt="Lonavala">
+        <div class="overlay">Lonavala</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/gatewayofindia.jpg' %}" alt="Gateway of India">
+        <div class="overlay">Gateway of India</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/matheran.jpg' %}" alt="Matheran">
+        <div class="overlay">Matheran</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/sidhivinayak.jpg' %}" alt="Sidhivinayak Temple">
+        <div class="overlay">Sidhivinayak Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/shirdi.jpg' %}" alt="Shirdi Temple">
+        <div class="overlay">Shirdi Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/panchgini.jpeg' %}" alt="Panchgani">
+        <div class="overlay">Panchgani</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/raigad.jpg' %}" alt="Raigad Fort">
+        <div class="overlay">Raigad Fort</div>
+    </div>
+
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 17 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Maharashtra Section -->
+<div class="about-section">
+    <h2>What to Do in Maharashtra</h2>
+    <p>Explore the historic forts like Raigad and Sinhagad.</p>
+    <p>Visit the famous Ajanta and Ellora Caves.</p>
+    <p>Enjoy the scenic beauty of Lonavala and Mahabaleshwar.</p>
+    <p>Experience the vibrant nightlife in Mumbai.</p>
+    <p>Relax at the beaches of Alibaug and Ganpatipule.</p>
+    <p>Seek blessings at Shirdi and Siddhivinayak Temple.</p>
+    <p>Take a wildlife safari at Tadoba National Park.</p>
+</div>
+
+<!-- About Maharashtra Section -->
+<div class="about-section">
+    <h2>About Maharashtra</h2>
+    <p>
+        Maharashtra, a state in western India, is known for its diverse culture, rich history, and stunning natural beauty. From the bustling streets of Mumbai to the serene beaches and hill stations like Lonavala and Matheran, Maharashtra offers a wide range of experiences for travelers.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<h3>You Might Also Like</h3>
+<div class="grid-container">
+    <a href="{% url 'goa' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Goa">
+            <div class="overlay">Goa</div>
+        </div>
+    </a>
+    <a href="{% url 'himachal_pradesh' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/shim.jpg' %}" alt="Himachal Pradesh">
+            <div class="overlay">Himachal Pradesh</div>
+        </div>
+    </a>
+    <a href="{% url 'ladak' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/leh palace.jpg' %}" alt="Leh Ladakh">
+            <div class="overlay">Leh Ladakh</div>
+        </div>
+    </a>
+</div>
+{% endblock %}

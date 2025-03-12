@@ -1,0 +1,238 @@
+
+body {
+background-color: #ffffff;
+color: #000000;
+text-align: center;
+padding: 20px;
+font-family: 'Times New Roman', Times, serif;
+position: relative;
+}
+
+body::before {
+display: none;
+}
+
+/* Stylish Header */
+h2 {
+font-size: 3rem;
+margin-bottom: 20px;
+color: #222;
+letter-spacing: 2px;
+font-family: 'Times New Roman', Times, serif;
+text-transform: uppercase; /* Enhances visibility */
+background: linear-gradient(90deg, #000000, #444241); /* Soft gradient */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #222;
+    letter-spacing: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase; /* Enhances visibility */
+    background: linear-gradient(90deg, #000000, #444241); /* Soft gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    }
+
+/* === Image Grid Section === */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.grid-item:first-child {
+grid-column: span 3;
+height: 300px; /* Adjust this value as needed */
+}
+
+
+.grid-item {
+position: relative;
+overflow: hidden;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
+transition: transform 0.3s ease-in-out;
+border-radius: 15px; /* Added border-radius */
+}
+
+.grid-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
+border-radius: 15px; /* Added border-radius */
+}
+
+
+.grid-item:hover {
+    transform: translateY(-5px);
+}
+
+.grid-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.grid-item:hover .overlay {
+    opacity: 1;
+}
+ /* === Book Now Button === */
+ .book-now-container {
+    margin-top: 30px;
+}
+
+.book-now-btn {
+display: inline-block;
+padding: 10px 25px; /* Reduced size */
+font-size: 1.2rem; /* Smaller text */
+font-weight: bold;
+background: rgb(0, 216, 255);
+color: white;
+border: none;
+border-radius: 25px;
+text-transform: uppercase;
+cursor: pointer;
+font-family: 'Times New Roman', Times, serif;
+transition: all 0.3s ease-in-out;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-now-btn:hover {
+background: rgb(0, 195, 206);
+transform: scale(1.05); /* Slight hover effect */
+}
+
+/* === About City Section === */
+.about-section {
+color: #222;
+padding: 50px 20px;
+border-radius: 0;
+margin-top: 50px;
+max-width: 1100px;
+margin: auto;
+box-shadow: none; /* Removed shadow */
+background: none; /* Removed background */
+}
+
+.about-section h2 {
+color: #000000;
+font-size: 2.8rem;
+text-shadow: none;
+margin-bottom: 20px;
+font-family: 'Times New Roman', Times, serif;
+}
+
+.about-section p {
+font-size: 1.3rem;
+font-family: 'Times New Roman', Times, serif;
+max-width: 800px;
+margin: auto;
+line-height: 1.8;
+color: #333333;
+opacity: 1; /* Ensuring full readability */
+}
+/* Stylish Button */
+.explore-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.explore-btn:hover {
+    background: #e74c3c;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2.2rem;
+    }
+    .about-section h2 {
+        font-size: 2.2rem;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+} 
+/* === Image Grid Section 2 === */
+.gri-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.gri-item {
+position: relative;
+overflow: hidden;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
+transition: transform 0.3s ease-in-out;
+border-radius: 15px; /* Added border-radius */
+}
+
+.gri-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
+border-radius: 15px; /* Added border-radius */
+}
+
+
+.gri-item:hover {
+    transform: translateY(-5px);
+}
+
+.gri-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+.gri-item:hover .overlay {
+    opacity: 1;
+}

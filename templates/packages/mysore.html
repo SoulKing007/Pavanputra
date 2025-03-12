@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mysore - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Mysore</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Palace1.jpg' %}" alt="Mysore Palace">
+        <div class="overlay">Mysore Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Chamundeshwari.jpg' %}" alt="Shri Chamundeshwari Devi Temple">
+        <div class="overlay">Shri Chamundeshwari Devi Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Jaganmohan.jpg' %}" alt="Jaganmohan Palace">
+        <div class="overlay">Jaganmohan Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Cathedral.jpg' %}" alt="St. Philomena's Cathedral">
+        <div class="overlay">St. Philomena's Cathedral</div>
+    </div>
+
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 8 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Mysore Section -->
+<div class="about-section">
+    <h2>What to do in Mysore</h2>
+    <p>Visit the majestic Mysore Palace, a symbol of royal heritage.</p>
+    <p>Explore Chamundi Hill and seek blessings at Chamundeshwari Temple.</p>
+    <p>Stroll through Brindavan Gardens and enjoy the musical fountain show.</p>
+    <p>Discover Mysore Zoo, home to diverse wildlife and exotic species.</p>
+    <p>Admire art and history at Jaganmohan Palace and its art gallery.</p>
+    <p>Shop for Mysore silk sarees, sandalwood, and handcrafted souvenirs.</p>
+    <p>Savor the famous Mysore Pak and other traditional delicacies.</p>
+</div>
+
+<!-- About Mysore Section -->
+<div class="about-section">
+    <h2>About Mysore</h2>
+    <p>
+        Mysore, known as the cultural capital of Karnataka, is famous for 
+        its grand Mysore Palace, rich heritage, and vibrant Dasara festival. 
+        The city is renowned for its royal history, silk sarees, sandalwood, 
+        and traditional arts. Visitors can explore Chamundi Hill, scenic gardens, 
+        and historic temples, making it a perfect blend of tradition and modernity.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<h3>You Might Also Like</h3>
+<div class="grid-container">
+    <a href="{% url 'hampi' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/Mathanga.jpg' %}" alt="Hampi">
+            <div class="overlay">Hampi</div>
+        </div>
+    </a>
+    <a href="{% url 'chennai' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/chennaip.jpg' %}" alt="Chennai">
+            <div class="overlay">Chennai</div>
+        </div>
+    </a>
+    <a href="{% url 'delhi' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/laxminarayan.jpg' %}" alt="Delhi">
+            <div class="overlay">Delhi</div>
+        </div>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Leh Ladakh - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Leh Ladakh</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/ladak.jpg' %}" alt="Ladakh">
+        <div class="overlay">Ladakh</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Palace">
+        <div class="overlay">Leh Palace</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/pangonglake.jpg' %}" alt="Pangong Lake">
+        <div class="overlay">Pangong Lake</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/DiskitGompa.jpg' %}" alt="Diskit Gompa">
+        <div class="overlay">Diskit Gompa</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/ThikseyMonastery.jpg' %}" alt="Thiksey Monastery">
+        <div class="overlay">Thiksey Monastery</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Shanti Stupa.jpg' %}" alt="Shanti Stupa">
+        <div class="overlay">Shanti Stupa</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/nubra-valley.jpg' %}" alt="Nubra Valley">
+        <div class="overlay">Nubra Valley</div>
+    </div>
+ 
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 11 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Leh Ladakh Section -->
+<div class="about-section">
+    <h2>What to do in Leh Ladakh</h2>
+    <p>Leh Ladakh offers a blend of natural beauty and cultural experiences.</p>
+    <p>Visit the serene Pangong Tso Lake, known for its changing hues.</p>
+    <p>Explore the historic Leh Palace, offering panoramic city views.</p>
+    <p>Experience tranquility at Thiksey Monastery, a prominent Buddhist site.</p>
+    <p>Embark on the Markha Valley trek for adventure enthusiasts.</p>
+    <p>Witness the confluence of the Indus and Zanskar rivers.</p>
+    <p>Savor traditional Ladakhi cuisine and engage with the warm local community.</p>
+</div>
+
+<!-- About Leh Ladakh Section -->
+<div class="about-section">
+    <h2>About Leh Ladakh</h2>
+    <p>
+        Leh-Ladakh is a breathtaking region in northern India, known for its stunning landscapes,
+        Buddhist monasteries, and adventurous roads. It is part of the Union Territory of Ladakh, 
+        which was formerly a part of Jammu and Kashmir before becoming a separate entity in 2019.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<h3>You Might Also Like</h3>
+<div class="grid-container">
+    <a href="{% url 'himachal_pradesh' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/shim.jpg' %}" alt="Himachal Pradesh">
+            <div class="overlay">Himachal Pradesh</div>
+        </div>
+    </a>
+    <a href="{% url 'goa' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Goa">
+            <div class="overlay">Goa</div>
+        </div>
+    </a>
+    <a href="{% url 'kerala' %}">
+        <div class="grid-item">
+            <img src="{% static 'assets/images/tourpack/Munnar.jpeg' %}" alt="Kerala">
+            <div class="overlay">Kerala</div>
+        </div>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Himachal Pradesh - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Himachal Pradesh</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/manali.jpg' %}" alt="Manali">
+        <div class="overlay">Manali</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/shimla.jpg' %}" alt="Shimla">
+        <div class="overlay">Shimla</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/spiti.jpg' %}" alt="Spiti Valley">
+        <div class="overlay">Spiti Valley</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/dharamsala.jpg' %}" alt="Dharamshala">
+        <div class="overlay">Dharamshala</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/kasol.jpg' %}" alt="Kasol">
+        <div class="overlay">Kasol</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/hadimba.jpg' %}" alt="Hadimba Temple">
+        <div class="overlay">Hadimba Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/shimla.jpg' %}" alt="Shimla">
+        <div class="overlay">Shimla</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 12  %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Himachal Pradesh Section -->
+<div class="about-section">
+    <h2>What to Do in Himachal Pradesh</h2>
+    <ul>
+        <p>Explore the scenic hill stations like Shimla and Manali.</p>
+        <p>Visit the famous monasteries in Dharamshala and Spiti Valley.</p>
+        <p>Enjoy adventure sports like paragliding in Bir Billing.</p>
+        <p>Trek through the stunning landscapes of Triund and Hampta Pass.</p>
+        <p>Experience the serenity of the beautiful lakes like Dal Lake and Chandra Tal.</p>
+        <p>Seek blessings at temples like Jakhoo Temple and Hidimba Devi Temple.</p>
+        <p>Witness the breathtaking beauty of Rohtang Pass and Keylong.</p>
+        
+    </ul>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Himachal Pradesh</h2>
+    <p>
+        Himachal Pradesh is a state in the northern part of India. 
+        Situated in the Western Himalayas, it is one of the thirteen mountain states 
+        and is characterised by an extreme landscape featuring several peaks and extensive river systems.
+    </p>
+</div>
+
+<!-- Suggested Places Section -->
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'jammu' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/srinagar.jpg' %}" alt="Jammu Kashmir">
+                <div class="overlay">Jammu Kashmir</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+        <a href="{% url 'maharashtra' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/matheran.jpg' %}" alt="Maharashtra">
+                <div class="overlay">Maharashtra</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

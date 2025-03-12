@@ -1,109 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Pavan Putra{% endblock %}</title>
+{% load static %}
+<!doctype html>
+<html class="no-js"  lang="en">
 
-    <!-- Bootstrap for basic styling (Optional) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<head>
+		<!-- META DATA -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Custom CSS -->
-    <style>
-        :root {
-            --background-color: #E0F7FA;  /* Light blue background */
-            --form-box-color: #FFFFFF;    /* Classic white */
-            --primary-color: #89b5e490;     /* Bright blue button */
-            --primary-hover: #0056b3;     /* Darker blue hover */
-            --text-color: #003366;        /* Dark blue text */  
-            --shadow-color: rgba(0, 0, 0, 0.15); /* Soft warm shadow */
-        }
+		<!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
 
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-        }
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
 
-        .navbar {
-            background-color: var(--primary-color);
-        }
+		<!-- TITLE OF SITE -->
+		<title>Pavan Putra</title>
 
-        .navbar-brand, .nav-link {
-            color: white !important;
-        }
+		  <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="{% static 'assets/logo/favicon.png' %}" />
 
-        .container {
-            margin-top: 20px;
-        }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" />
 
-        .form-box {
-            background: var(--form-box-color);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-        }
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/hover-min.css' %}">
 
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
-        }
-        .logo a, .logo a:hover, .logo a:focus{
-    color: #fff;
-    font-size:24px;
-    font-family: 'Poppins', sans-serif;
-    text-transform: capitalize;
-    font-weight: 600;
-    margin: 14px 0px 0;
-    padding: 10px 0 0 0;
-}
-.logo a span{
-    color: #00d8ff;
-    text-transform: capitalize;
-}
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}" />
 
-    </style>
-</head>
-<body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <div class="logo">
-                <a href="/">
-                    Pavan<span>Putra</span>
-                </a>
-            </div><!-- /.logo-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
-                        {% csrf_token %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout_confirm' %}">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Bootsnav CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootsnav.css' %}" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/base.css' %}" />
+
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+	</head>
+
+	<body>
+
+<!-- main-menu Start -->
+		<header class="top-area">
+			<div class="header-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="logo">
+								<a href="/">
+									Pavan<span>Putra</span>
+								</a>
+							</div><!-- /.logo-->
+						</div><!-- /.col-->
+						<div class="col-sm-10">
+							<div class="main-menu">
+							
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<i class="fa fa-bars"></i>
+									</button><!-- / button-->
+								</div><!-- /.navbar-header-->
+								<div class="collapse navbar-collapse">		  
+									<ul class="nav navbar-nav navbar-right">
+										<li class="smooth-menu"><a href="{% url 'index' %}">home</a></li>
+										<li class="smooth-menu"><a href="{% url 'viewpack' %}">Packages </a></li>
+                                        {% if user.is_authenticated %}
+                                        <li class="smooth-menu"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                        {% csrf_token %}
+                                        <li class="smooth-menu"><a href="{% url 'logout_confirm' %}">Logout</a></li>
+										<li class="smooth-menu"><a href="{% url 'booking' 3 %}">Book Now</a></li>
+										<button class="profile-btn" onclick="location.href='{% url 'profile' %}'">P</button>
+                                            {% else %}
+                                        <li class="smooth-menu"><a href="{% url 'login' %}">Login</a></li>
+                                        <li class="smooth-menu"><a href="{% url 'signup' %}">Sign Up</a></li>
+                                    {% endif %}
+
+									</ul>
+								</div><!-- /.navbar-collapse -->
+							</div><!-- /.main-menu-->
+						</div><!-- /.col-->
+					</div><!-- /.row -->
+					<div class="home-border"></div><!-- /.home-border-->
+				</div><!-- /.container-->
+			</div><!-- /.header-area -->
+
+		</header><!-- /.top-area-->
 
     <!-- Page Content -->
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <div class="content">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+    
+
+
+
+        <!-- jQuery -->
+<script src="{% static 'assets/js/jquery.js' %}"></script>
+
+<!-- Modernizr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+<!-- Bootsnav -->
+<script src="{% static 'assets/js/bootsnav.js' %}"></script>
+
+
+<!-- Counter Up -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+
+<!-- Owl Carousel -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+<!-- Sticky Plugin -->
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Custom Scripts -->
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+	</body>
+
 </html>

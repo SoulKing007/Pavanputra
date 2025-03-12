@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Kolkata - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Kolkata</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/howrah.jpg' %}" alt="City Skyline">
+        <div class="overlay">Howrah Bridge</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/victoriamahel.jpg' %}" alt="Historic Streets">
+        <div class="overlay">Victoria Memorial</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/kalighat.jpg' %}" alt="Nightlife">
+        <div class="overlay">Kalighat Temple</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/ecopark.jpg' %}" alt="Nightlife">
+        <div class="overlay">Eco Park</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/stpaul.jpg' %}" alt="Landmarks">
+        <div class="overlay">St. Paul's Cathedral</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/zooko.jpg' %}" alt="Cafe">
+        <div class="overlay">Zoological Garden</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/mpbirla.jpg' %}" alt="Cafe">
+        <div class="overlay">M.P. Birla Planetarium</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/edengarden.jpg' %}" alt="Cafe">
+        <div class="overlay">Eden Gardens</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <button class="book-now-btn">Book Now</button>
+</div>
+
+<!-- What to Do in Kolkata Section -->
+<div class="about-section">
+    <h2>What to Do in Kolkata</h2>
+    <p>Explore the historic landmarks like Victoria Memorial and Howrah Bridge.</p>
+    <p>Visit the iconic Dakshineswar Kali Temple and Belur Math.</p>
+    <p>Stroll through the bustling streets of College Street, the hub of bookstores.</p>
+    <p>Experience the artistic and intellectual vibe at the Indian Museum and Tagore’s house.</p>
+    <p>Enjoy the scenic beauty of the Hooghly River with a boat ride at Prinsep Ghat.</p>
+    <p>Savor delicious Bengali cuisine, including rasgulla, mishti doi, and fish curry.</p>
+    <p>Shop for traditional Bengali sarees in markets like Gariahat and New Market.</p>
+    <p>Attend the grand Durga Puja festival, Kolkata’s biggest cultural celebration.</p>
+    <p>Watch a cricket match or football game at Eden Gardens, one of India’s largest stadiums.</p>
+    <p>Relax in the greenery of Maidan and Rabindra Sarobar.</p>
+</div>
+
+<!-- About Kolkata Section -->
+<div class="about-section">
+    <h2>About Kolkata</h2>
+    <p>
+        Kolkata, the capital of West Bengal, is a city rich in history, culture, and artistic 
+        heritage. Known as the "City of Joy," it is famous for its colonial architecture, intellectual 
+        traditions, and vibrant festivals. Iconic landmarks such as the Howrah Bridge, Victoria Memorial, 
+        and Dakshineswar Kali Temple showcase the city's architectural grandeur.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'goa' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Goa">
+                <div class="overlay">Goa</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+        <a href="{% url 'delhi' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/laxminarayan.jpg' %}" alt="Delhi">
+                <div class="overlay">Delhi</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

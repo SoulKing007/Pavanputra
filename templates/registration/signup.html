@@ -1,169 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+{% extends 'base.html' %}
+{% load static %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --background-color: #F4EAE0;  /* Soft warm beige */
-            --form-box-color: #FFFFFF;    /* Classic white */
-            --primary-color: #D87A56;     /* Warm terracotta button */
-            --primary-hover: #B05C3C;     /* Darker terracotta */
-            --text-color: #3E2C28;        /* Dark brown text */
-            --shadow-color: rgba(0, 0, 0, 0.15); /* Soft warm shadow */
-        }
+{% block title %}Sign Up{% endblock %}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+{% block content %}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--background-color);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+<!-- Internal CSS for Sign Up Page -->
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
 
-        /* Logo positioned at the top-left corner */
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-        }
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        padding: 20px;
+    }
 
-        .logo a, 
-        .logo a:hover, 
-        .logo a:focus {
-            color: #ffffff;
-            font-size: 24px;
-            font-family: 'Poppins', sans-serif;
-            text-transform: capitalize;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 10px 0;
-        }
+    .signup-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
 
-        .logo a .pavan {
-            color: #8b695f; 
-        }
+    .signup-card h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
 
-        .logo a span {
-            color: #00d8ff;
-            text-transform: capitalize;
-        }
+    .form-label {
+        color: #555;
+        font-weight: 500;
+    }
 
-        .container {
-            background: var(--form-box-color);
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 8px 20px var(--shadow-color); /* Smooth shadow */
-            max-width: 400px;
-            width: 90%;
-            color: var(--text-color);
-        }
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s;
+    }
 
-        h2 { margin-bottom: 20px; }
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: none;
+    }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
 
-        .password-wrapper { position: relative; width: 100%; }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
 
-        .eye-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
+    .alert {
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-color);
-            border: none;
-            color: white;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    .error-message {
+        font-size: 0.875em;
+        color: #d9534f;
+    }
 
-        button:hover { background: var(--primary-hover); }
+    .text-center a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
-        .toggle-link { color: var(--primary-color); text-decoration: none; }
+    .text-center a:hover {
+        color: #0056b3;
+    }
+</style>
 
-        .toggle-link:hover { text-decoration: underline; }
+<div class="signup-container">
+    <div class="signup-card">
+        <h3>Sign Up</h3>
 
-        /* Error message styling */
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
+        {% if messages %}
+            <div class="alert alert-warning">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
 
-    <div class="logo">
-        <a href="/">
-            <span class="pavan">Pavan</span><span>Putra</span>
-        </a>
-    </div>
-    
-    <div class="container">
-        <h2>Signup</h2>
-        <form method="POST" action="{% url 'signup' %}">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
-            <!-- Username field -->
-            <input type="text" name="username" id="signup-username" placeholder="Username" required>
-            
-            <!-- Email field -->
-            <input type="email" name="email" id="signup-email" placeholder="Email" required>
-            
-            <!-- Password field -->
-            <div class="password-wrapper">
-                <input type="password" name="password" id="signup-password" placeholder="Password" required>
-                <span class="eye-icon" onclick="togglePassword('signup-password')">👁️</span>
-            </div>
-    
-            <!-- Confirm Password field -->
-            <div class="password-wrapper">
-                <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
-                <span class="eye-icon" onclick="togglePassword('confirm-password')">👁️</span>
-            </div>
-    
-            <!-- Error message section -->
-            {% if form.non_field_errors %}
-                <div class="error-message">
-                    {% for error in form.non_field_errors %}
-                        <p>{{ error }}</p>
-                    {% endfor %}
+            {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label">{{ field.label }}</label>
+                    <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-control" required>
+                    {% if field.errors %}
+                        <div class="error-message">{{ field.errors.0 }}</div>
+                    {% endif %}
                 </div>
-            {% endif %}
-    
-            <button type="submit">Sign Up</button>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
-        <p>Already have an account? <a href="{% url 'login' %}" class="toggle-link">Login here</a></p>
+
+        <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
+        </p>
     </div>
-    
-    <script>
-        function togglePassword(id) {
-            var field = document.getElementById(id);
-            field.type = field.type === "password" ? "text" : "password";
-        }
-    </script>
-</body>
-</html>
+</div>
+
+{% endblock %}

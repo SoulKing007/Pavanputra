@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Goa - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Goa</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/bagabeach.jpg' %}" alt="Baga Beach">
+        <div class="overlay">Baga Beach</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/fontainhas.jpg' %}" alt="Fontainhas Street">
+        <div class="overlay">Fontainhas Street</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/dudhsagar.jpg' %}" alt="Dudhsagar Falls">
+        <div class="overlay">Dudhsagar Falls</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/colva.jpg' %}" alt="Colva Beach">
+        <div class="overlay">Colva Beach</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/anjuna.jpg' %}" alt="Anjuna Flea Market">
+        <div class="overlay">Anjuna Flea Market</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/basilica.jpg' %}" alt="Basilica of Bom Jesus">
+        <div class="overlay">Basilica of Bom Jesus</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/bigdaddy.jpg' %}" alt="Big Daddy Casino">
+        <div class="overlay">Big Daddy Casino</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 13 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Goa Section -->
+<div class="about-section">
+    <h2>What to Do in Goa</h2>
+    <div class="activities-list">
+        <p>Relax on the stunning beaches like Baga and Palolem.</p>
+        <p>Explore the vibrant nightlife at Tito’s Lane and Club Cubana.</p>
+        <p>Visit the historic churches of Old Goa, including Basilica of Bom Jesus.</p>
+        <p>Enjoy water sports like jet skiing and parasailing at Calangute Beach.</p>
+        <p>Take a scenic cruise on the Mandovi River.</p>
+        <p>Experience the charm of the Portuguese architecture in Fontainhas.</p>
+        <p>Indulge in Goan seafood and traditional cuisine.</p>
+    </div>
+</div>
+
+<!-- About City Section -->
+<div class="about-section">
+    <h2>About Goa</h2>
+    <p>
+        Goa is a coastal state in western India, known for its stunning beaches, vibrant nightlife, and rich Portuguese heritage. 
+        It boasts a mix of modern attractions and historical landmarks, including ancient churches, forts, and colorful streets. 
+        With its scenic beauty, diverse culture, and thriving tourism industry, Goa is a perfect destination for relaxation and adventure.
+    </p>
+</div>
+
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'kerala' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Munnar.jpeg' %}" alt="Kerala">
+                <div class="overlay">Kerala</div>
+            </div>
+        </a>
+        <a href="{% url 'himachal_pradesh' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/shim.jpg' %}" alt="Himachal Pradesh">
+                <div class="overlay">Himachal Pradesh</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

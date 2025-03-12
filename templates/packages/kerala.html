@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Kerala - City Showcase{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/tour.css' %}" />
+<h2>Kerala</h2>
+
+<!-- Grid Image Section -->
+<div class="grid-container">
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Kumarakom.jpeg' %}" alt="Kumarakom">
+        <div class="overlay">Kumarakom</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Munnar.jpeg' %}" alt="Munnar">
+        <div class="overlay">Munnar</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Wayanad.jpg' %}" alt="Wayanad">
+        <div class="overlay">Wayanad</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Kovalam.jpg' %}" alt="Kovalam">
+        <div class="overlay">Kovalam</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Kochi.jpeg' %}" alt="Kochi">
+        <div class="overlay">Kochi</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Alleppey.jpeg' %}" alt="Alleppey">
+        <div class="overlay">Alleppey</div>
+    </div>
+    <div class="grid-item">
+        <img src="{% static 'assets/images/tourpack/Munnar.jpeg' %}" alt="Munnar">
+        <div class="overlay">Munnar</div>
+    </div>
+</div>
+
+<!-- Book Now Button -->
+<div class="book-now-container">
+    <a href="{% url 'booking' 10 %}">
+        <button class="book-now-btn">Book Now</button>
+    </a>
+</div>
+
+<!-- What to Do in Kerala Section -->
+<div class="about-section">
+    <h2>What to do in Kerala</h2>
+    <p>Cruise the serene backwaters on a traditional houseboat.</p>
+    <p>Explore verdant tea plantations in Munnar.</p>
+    <p>Witness the unique Chinese fishing nets in Kochi.</p>
+    <p>Relax on the pristine beaches of Varkala.</p>
+    <p>Experience wildlife at Thekkady's Periyar Wildlife Sanctuary.</p>
+    <p>Attend a traditional Kathakali dance performance.</p>
+    <p>Indulge in rejuvenating Ayurvedic treatments.</p>
+</div>
+
+<!-- About Kerala Section -->
+<div class="about-section">
+    <h2>About Kerala</h2>
+    <p>
+        Kerala, located on India's southwestern Malabar Coast, is renowned for its 
+        lush greenery, tranquil backwaters, and rich cultural heritage. Often referred
+        to as "God's Own Country," the state boasts a high literacy rate and diverse traditions. 
+        Tourists are drawn to its serene landscapes, vibrant festivals, and classical art forms 
+        like Kathakali. Kerala's unique blend of natural beauty and cultural richness makes it a 
+        captivating destination.
+    </p>
+</div>
+
+<!-- You Might Also Like Section -->
+<div>
+    <h3>You Might Also Like</h3>
+    <div class="gri-container">
+        <a href="{% url 'maharashtra' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/lonavala.jpg' %}" alt="Maharashtra">
+                <div class="overlay">Maharashtra</div>
+            </div>
+        </a>
+        <a href="{% url 'himachal_pradesh' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/shim.jpg' %}" alt="Himachal Pradesh">
+                <div class="overlay">Himachal Pradesh</div>
+            </div>
+        </a>
+        <a href="{% url 'ladak' %}">
+            <div class="gri-item">
+                <img src="{% static 'assets/images/tourpack/Leh Palace.jpg' %}" alt="Leh Ladakh">
+                <div class="overlay">Leh Ladakh</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
