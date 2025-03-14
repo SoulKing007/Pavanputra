@@ -3,18 +3,35 @@
 {% block title %}Special Packages{% endblock %}
 
 {% block content %}
-    <section id="pack" class="packages" style="background-color: rgb(236, 236, 236);">
-        <div class="container">
-            <div class="gallary-header text-center">
-                <h2 style="color: #474747;">Special Packages</h2>
-                
+<section id="pack" class="packages" style="background-color: rgb(236, 236, 236);">
+    <div class="container">
+        <div class="gallary-header text-center">
+            <h2 style="color: #474747;">Special Packages</h2>
+        </div>
+        
+        <!-- Search and Sort Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search packages...">
             </div>
-            <div class="packages-content">
-                <div class="row">
-                    {% for tour in tours         %}
-                        <div class="col-md-4 col-sm-6 mb-4">
-                            <a href="{% url 'tour_detail' tour.name %}" style="text-decoration: none; color: inherit;">
-                                <div class="single-package-item" style="background-color: rgb(255, 255, 255); cursor: pointer;">
+            <div class="col-md-4">
+                <select id="sortSelect" class="form-control">
+                    <option value="price">Sort by Price</option>
+                    <option value="duration">Sort by Duration</option>
+                    <option value="rating">Sort by Rating</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button id="voiceSearch" class="btn btn-primary"><i class="fa fa-microphone"></i></button>
+            </div>
+        </div>
+        
+        <div class="packages-content">
+            <div class="row" id="toursContainer">
+                {% for tour in tours %}
+                    <div class="col-md-4 col-sm-6 mb-4 tour-item" data-price="{{ tour.price }}" data-duration="{{ tour.default_duration_days }}" data-rating="{{ tour.rating }}" data-name="{{ tour.name }}">
+                        <a href="{% url 'tour_detail' tour.name %}" style="text-decoration: none; color: inherit;">
+                            <div class="single-package-item" style="background-color: rgb(255, 255, 255); cursor: pointer;">
                                 <img src="{{ tour.image.url }}" alt="{{ tour.title }}">
                                 <div class="single-package-item-txt">
                                     <h3>{{ tour.name }} <span class="pull-right">{{ tour.price }}/-</span></h3>
@@ -36,15 +53,41 @@
                                             <span>{{ tour.reviews }} reviews</span>
                                         </p>
                                     </div>
-                                    <div class="about-btn text-center">
-                                    </div>
                                 </div>
                             </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+        let searchValue = this.value.toLowerCase();
+        document.querySelectorAll(".tour-item").forEach(item => {
+            let name = item.getAttribute("data-name").toLowerCase();
+            item.style.display = name.includes(searchValue) ? "block" : "none";
+        });
+    });
+
+    document.getElementById("sortSelect").addEventListener("change", function () {
+        let criteria = this.value;
+        let tours = Array.from(document.querySelectorAll(".tour-item"));
+        tours.sort((a, b) => a.getAttribute("data-" + criteria) - b.getAttribute("data-" + criteria));
+        let container = document.getElementById("toursContainer");
+        container.innerHTML = "";
+        tours.forEach(tour => container.appendChild(tour));
+    });
+
+    document.getElementById("voiceSearch").addEventListener("click", function () {
+        let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.start();
+        recognition.onresult = function (event) {
+            document.getElementById("searchInput").value = event.results[0][0].transcript;
+            document.getElementById("searchInput").dispatchEvent(new Event("input"));
+        };
+    });
+</script>
 {% endblock %}

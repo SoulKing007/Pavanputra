@@ -4,118 +4,55 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/signup.css' %}">
 
-<!-- Internal CSS for login page -->
-<style>
-    body {
-        background-color: #f5f7fa;
-    }
+<div class="main1">
 
-    .login-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 80vh;
-        padding: 20px;
-    }
+        <div class="container1">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="{% static 'assets/images/signin-image.jpg' %}" alt="Sign in image"></figure>
+                    <a href="{% url 'signup' %}" class="signup-image-link">Create an account</a>
+                </div>
 
-    .login-card {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        width: 100%;
-    }
-
-    .login-card h3 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
-
-    .form-label {
-        color: #555;
-        font-weight: 500;
-    }
-
-    .form-control {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 15px;
-        transition: border-color 0.3s;
-    }
-
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: none;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-        border-radius: 8px;
-        padding: 10px;
-        width: 100%;
-        transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-
-    .alert {
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 15px;
-    }
-
-    .text-center a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .text-center a:hover {
-        color: #0056b3;
-    }
-</style>
-
-<div class="login-container">
-    <div class="login-card">
-        <h3>Login</h3>
-
-        {% if messages %}
-            <div class="alert alert-warning">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
+                <div class="signin-form">
+                    <h2 class="form-title">Login</h2>
+                    
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <form method="post" class="register-form" id="login-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="username" id="username" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term"/>
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span> Remember me</label>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        </div>
+                    </form>
+                    <p class="text-center">
+                        Forgot your password? <a href="{% url 'password_reset_request' %}">Reset it here</a>.
+                    </p>
+                </div>
             </div>
-        {% endif %}
+        </div>
 
-        <form method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-
-        <p class="text-center mt-3">
-            Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
-        </p>
-        <p class="text-center">
-            Forgot your password? <a href="{% url 'password_reset_request' %}">Reset it here</a>.
-        </p>
-    </div>
 </div>
 
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/signup.js' %}"></script>
 {% endblock %}

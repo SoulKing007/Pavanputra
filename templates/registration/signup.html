@@ -5,120 +5,80 @@
 
 {% block content %}
 
-<!-- Internal CSS for Sign Up Page -->
-<style>
-    body {
-        background-color: #f5f7fa;
-    }
+<!-- Font Icon -->
+<link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
 
-    .signup-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 90vh;
-        padding: 20px;
-    }
+<!-- Main CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/signup.css' %}">
 
-    .signup-card {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        width: 100%;
-    }
+<div class="main1">
+        <div class="container1">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign Up</h2>
 
-    .signup-card h3 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
-
-    .form-label {
-        color: #555;
-        font-weight: 500;
-    }
-
-    .form-control {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 15px;
-        transition: border-color 0.3s;
-    }
-
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: none;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-        border-radius: 8px;
-        padding: 10px;
-        width: 100%;
-        transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-
-    .alert {
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 15px;
-    }
-
-    .error-message {
-        font-size: 0.875em;
-        color: #d9534f;
-    }
-
-    .text-center a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .text-center a:hover {
-        color: #0056b3;
-    }
-</style>
-
-<div class="signup-container">
-    <div class="signup-card">
-        <h3>Sign Up</h3>
-
-        {% if messages %}
-            <div class="alert alert-warning">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        {% endif %}
-
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            
-            {% for field in form %}
-                <div class="mb-3">
-                    <label class="form-label">{{ field.label }}</label>
-                    <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-control" required>
-                    {% if field.errors %}
-                        <div class="error-message">{{ field.errors.0 }}</div>
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
                     {% endif %}
+
+                    <form method="post" class="register-form" id="register-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="{{ form.username.name }}" id="name" placeholder="Your Name" required>
+                            {% if form.username.errors %}
+                                <div class="error-message">{{ form.username.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="{{ form.email.name }}" id="email" placeholder="Your Email" required>
+                            {% if form.email.errors %}
+                                <div class="error-message">{{ form.email.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="{{ form.password1.name }}" id="pass" placeholder="Password" required>
+                            {% if form.password1.errors %}
+                                <div class="error-message">{{ form.password1.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="{{ form.password2.name }}" id="re_pass" placeholder="Repeat your password" required>
+                            {% if form.password2.errors %}
+                                <div class="error-message">{{ form.password2.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register">
+                        </div>
+                    </form>
                 </div>
-            {% endfor %}
 
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-
-        <p class="text-center mt-3">
-            Already have an account? <a href="{% url 'login' %}">Login</a>
-        </p>
-    </div>
+                <div class="signup-image">
+                    <figure>
+                        <img src="{% static 'assets/images/signup-image.jpg' %}" alt="Sign up image">
+                    </figure>
+                    <a href="{% url 'login' %}" class="signup-image-link">I am already a member</a>
+                </div>
+            </div>
+        </div>
+    
 </div>
+
+<!-- jQuery and Main JS -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 {% endblock %}

@@ -117,10 +117,16 @@ body{
 .home-border{
     border-top:2px solid #fff;
 }
-.container{
-            margin-top: 10px;  
-            align-items: center;
-        }
+.container {
+    min-height: 100vh; /* Ensure the container takes full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically if it's less */
+    align-items: center; /* Centers content horizontally */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Ensures padding doesn't increase the size */
+  }
+  
         .header-area {
     position: fixed;
     padding-top: 24px;

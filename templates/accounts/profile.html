@@ -1,15 +1,71 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}User Profile{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="form-box">
-        <h2>Welcome, {{ user.username }}!</h2>
-        <p><strong>Email:</strong> {{ user.email }}</p>
+<div class="container profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <img src="{% static 'images/default-profile.png' %}" alt="Profile Picture" class="profile-img">
+            <h2>Welcome, {{ user.username }}!</h2>
+            <p class="email"><strong>Email:</strong> {{ user.email }}</p>
+        </div>
         
-        <a href="{% url 'dashboard' %}" class="btn-primary">View Booked Tours</a> <!-- Link to Dashboard -->
-        <a href="{% url 'logout_confirm' %}" class="btn-danger">Logout</a> <!-- Styled logout button -->
+        <div class="profile-details">
+            <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>City:</strong> {{ user.city }}</p>
+            <p><strong>State:</strong> {{ user.state }}</p>
+        </div>
+
+        <div class="profile-actions">
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">View Booked Tours</a>
+            
+            <a href="{% url 'password_reset_request' %}" class="btn btn-warning">Change Password</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        </div>
     </div>
 </div>
+
+<style>
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .profile-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 400px;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .profile-details p {
+        margin: 5px 0;
+    }
+
+    .profile-actions a {
+        display: block;
+        margin-top: 10px;
+        padding: 8px;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .btn-primary { background: #007bff; }
+    .btn-secondary { background: #6c757d; }
+    .btn-warning { background: #ffc107; }
+    .btn-danger { background: #dc3545; }
+</style>
 {% endblock %}
